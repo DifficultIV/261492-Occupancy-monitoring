@@ -1,11 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Sidebar from './components/Sidebar';
+import {BrowserRouter,Routes,Route,} from 'react-router-dom'
+import Home from './pages/Home';
+import Record from './pages/Record';
+import About from './pages/About';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold mt-6 ml-4">
-      CMUBusDB
-    </h1>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/record' element={<Record/>}/>
+          <Route path='/about' element={<About/>}/>
+        </Routes>
+      </BrowserRouter>
+      
+      </div>
   );
 }
 
