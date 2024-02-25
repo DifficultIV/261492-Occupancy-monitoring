@@ -5,7 +5,7 @@ function About() {
         <>
     <div className='flex'>
         <Sidebar/>
-        <h1>about</h1>
+        <h1 className='m-8'>about</h1>
 
     </div>
     </>
