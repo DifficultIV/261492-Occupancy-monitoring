@@ -1,15 +1,49 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Sidebar from '../components/Sidebar';
 import DropdownLine from '../components/DropdownLine';
 import DropdownBus from '../components/DropdownBus';
-function Record({ data }) {
+function Record() {
     var line = ""
+    const [data, setData] = useState([])
+    const [count,setCount] = useState([])
+    const pages = []
     const callFromDropdownLine = (value) => {
         console.log(value)
         line = value
         console.log(line)
         console.log(line === "เลือกสาย")
     }
+
+    useEffect(() => {
+        fetch("http://localhost:3000/count", {mode: "cors"})
+          .then(res => res.json())
+          .then((result) => { 
+          setCount(result)
+          })
+      }, [])
+
+    for(let i = 1;i < count.page;i++){
+        if(pages.indexOf(i) === -1){
+            pages.push(i)
+        }
+    }
+    console.log(pages)
+    const fetchButton = async (value) => {
+        try {
+            const data = await (await fetch(`http://localhost:3000/recorddb?pages=${value}`)).json()
+            setData(data)
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    useEffect(() => {
+      fetch("http://localhost:3000/recorddb", {mode: "cors"})
+        .then(res => res.json())
+        .then((result) => { 
+        setData(result)
+        })
+    }, [])
     console.log(data)
     return (
         <>
@@ -88,13 +122,22 @@ function Record({ data }) {
                     </div>
                 </div>
                 <div>
+                    <div className='flex'>
+                        {
+                            pages.map((item,i) =>(
+                                <button key={i} onClick={fetchButton(item)} className='border-black'>Page {item}</button>
+                            ))
+                        }
+                    </div>
                     {data.map((item, i) => (
                     <div className='flex items-center' key={i}>
-                        <p className=' border-2 border-black'>{item._time} </p>
-                        <p className=' border-2 border-black'>{item._measurement} </p>
-                        <p className=' border-2 border-black'>{item.Station} </p>
-                        <p className=' border-2 border-black'>{item._field} </p>
-                        <p className=' border-2 border-black'>{item._value} </p>
+                        <p className=' border-2 border-black'>{item.busid} </p>
+                        <p className=' border-2 border-black'>{item.date} </p>
+                        <p className=' border-2 border-black'>{item.time} </p>
+                        <p className=' border-2 border-black'>{item.station} </p>
+                        <p className=' border-2 border-black'>{item.in} </p>
+                        <p className=' border-2 border-black'>{item.out} </p>
+                        <p className=' border-2 border-black'>{item.current} </p>
                     </div>
                 ))}</div>
             </div>
