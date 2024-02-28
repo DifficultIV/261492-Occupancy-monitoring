@@ -2,18 +2,36 @@ import React,{useEffect,useState} from 'react'
 import Sidebar from '../components/Sidebar';
 import DropdownLine from '../components/DropdownLine';
 import DropdownBus from '../components/DropdownBus';
+
+    const fetchButton = async (value) => {
+        try{
+                        const respone = await fetch(`http://localhost:3000/recorddb?pages=${value}`)
+            const body = await respone.json()
+            console.log(body)
+            return body
+        }
+        catch{
+        }
+
+    }
+    
 function Record() {
     var line = ""
     const [data, setData] = useState([])
     const [count,setCount] = useState([])
-    const pages = []
+    let pages = []
     const callFromDropdownLine = (value) => {
         console.log(value)
         line = value
         console.log(line)
         console.log(line === "เลือกสาย")
     }
-
+    const onClickHandler = async (value) =>{
+        const dataHold = await fetchButton(value)
+        console.log(dataHold)
+        setData(dataHold)
+        console.log(data)
+    }
     useEffect(() => {
         fetch("http://localhost:3000/count", {mode: "cors"})
           .then(res => res.json())
@@ -22,20 +40,13 @@ function Record() {
           })
       }, [])
 
-    for(let i = 1;i < count.page;i++){
+    for(let i = 1;i <= count.page;i++){
         if(pages.indexOf(i) === -1){
             pages.push(i)
         }
     }
     console.log(pages)
-    const fetchButton = async (value) => {
-        try {
-            const data = await (await fetch(`http://localhost:3000/recorddb?pages=${value}`)).json()
-            setData(data)
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
+
 
     useEffect(() => {
       fetch("http://localhost:3000/recorddb", {mode: "cors"})
@@ -125,7 +136,7 @@ function Record() {
                     <div className='flex'>
                         {
                             pages.map((item,i) =>(
-                                <button key={i} onClick={fetchButton(item)} className='border-black'>Page {item}</button>
+                                <button key={i} onClick={() => onClickHandler(item)} className='border-black'>Page {item}</button>
                             ))
                         }
                     </div>
