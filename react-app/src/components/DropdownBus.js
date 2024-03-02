@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import '../App.css';
-import {AiOutlineCaretUp, AiOutlineCaretDown} from "react-icons/ai";
+import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 import { BusList } from "./BusList";
 
-function DropdownBus (){
+function DropdownBus() {
     // const [isOpen, setIsOpen] = useState(false)
     return (
         // <div className="relative flex flex-col items-center w-[340px] h-[340px] rounded-md">
@@ -27,13 +27,13 @@ function DropdownBus (){
         //     }
         // </div>
         <div>
-        <select name="lines" id="lines" className="bg-blue-400 p-4 w-full flex items-center justify-between font-bold text-lg rounded-md tracking-wider">
-            {BusList.map((item,i) =>(
-                <option value={item.title} key={i} >{item.title}</option>
-            ))}
-        
-        </select>
-    </div>
+            <select name="lines" id="lines" className="bg-blue-400 p-4 w-full flex items-center justify-between font-bold text-lg rounded-md tracking-wider">
+                {BusList.map((item, i) => (
+                    <option value={item.title} key={i} >{item.title}</option>
+                ))}
+
+            </select>
+        </div>
     )
 }
 
