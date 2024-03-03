@@ -93,10 +93,10 @@ function Record() {
                                 <div className='mr-4 '>คันที่ 1</div>
                                 {
                                     db.map((item, i) => (
-                                        <div key={i} className='m-4'>
-                                            <p>ขึ้น:  {item.in}</p>
-                                            <p>ลง:  {item.out}</p>
-                                            <p>ขึ้น:  {item.current}</p>
+                                        <div key={i} className='m-2'>
+                                            <p className='text-center'>ขึ้น:  {item.in}</p>
+                                            <p className='text-center'>ลง:  {item.out}</p>
+                                            <p className='text-center'>ขึ้น:  {item.current}</p>
                                             <Heatmap data={item} />
                                             <p className='text-wrap text-center'>{item.station}</p>
                                         </div>
@@ -166,6 +166,7 @@ function Record() {
                             <p className=' border-2 border-black w-16 text-center'>bus_id </p>
                             <p className=' border-2 border-black w-24 text-center'>date </p>
                             <p className=' border-2 border-black w-16 text-center'>time </p>
+                            <p className=' border-2 border-black w-16 text-center'>Line </p>
                             <p className=' border-2 border-black w-60 text-center'>station </p>
                             <p className=' border-2 border-black w-16 text-center'>in </p>
                             <p className=' border-2 border-black w-16 text-center'>out </p>
@@ -176,6 +177,7 @@ function Record() {
                                 <p className=' border-2 border-black w-16 text-center'>{item.busid} </p>
                                 <p className=' border-2 border-black w-24 text-center'>{item.date} </p>
                                 <p className=' border-2 border-black w-16 text-center'>{item.time} </p>
+                                <p className=' border-2 border-black w-16 text-center'>{item.line} </p>
                                 <p className=' border-2 border-black w-60 text-center'>{item.station} </p>
                                 <p className=' border-2 border-black w-16 text-center'>{item.in} </p>
                                 <p className=' border-2 border-black w-16 text-center'>{item.out} </p>
