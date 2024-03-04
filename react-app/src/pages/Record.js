@@ -8,7 +8,7 @@ let time = "0"
 let page = 0
 const fetchButton = async () => {
     try {
-        const respone = await fetch(`${process.env.URL}/recorddb?pages=${page}&time=${time}`)
+        const respone = await fetch(`${process.env.REACT_APP_URL}/recorddb?pages=${page}&time=${time}`)
         const body = await respone.json()
         console.log(body)
         return body
@@ -38,7 +38,7 @@ function Record() {
         console.log(data)
     }
     useEffect(() => {
-        fetch(`${process.env.URL}/count`, { mode: "cors" })
+        fetch(`${process.env.REACT_APP_URL}/count`, { mode: "cors" })
             .then(res => res.json())
             .then((result) => {
                 setCount(result)
@@ -46,7 +46,7 @@ function Record() {
     }, [])
 
     useEffect(() => {
-        fetch(`${process.env.URL}/db`, { mode: "cors" })
+        fetch(`${process.env.REACT_APP_URL}/db`, { mode: "cors" })
             .then(res => res.json())
             .then((result) => {
                 setDb(result)
@@ -62,7 +62,7 @@ function Record() {
 
 
     useEffect(() => {
-        fetch(`${process.env.URL}/recorddb`, { mode: "cors" })
+        fetch(`${process.env.REACT_APP_URL}/recorddb`, { mode: "cors" })
             .then(res => res.json())
             .then((result) => {
                 setData(result)
