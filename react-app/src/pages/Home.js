@@ -28,6 +28,9 @@ function Home() {
                     </div>
                     {data.map((item, i) => (
                         <div key={i} className='grid grid-cols-3'>
+                            <div className='flex-col justify-between w-auto h-fit m-8'>รถ</div>
+                            <div className='flex-col justify-between w-auto h-fit m-8'>สถานี</div>
+                            <div className='flex-col justify-between w-auto h-fit m-8'>จำนวนคนบนรถ</div>
                             <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8 text-center'>{item.busid}</div>
                             <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8 text-center'>{item.station}</div>
                             <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8 text-center'>{item.current}/12</div>

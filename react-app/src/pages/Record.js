@@ -82,7 +82,7 @@ function Record() {
                     </div>
                     {/* { (line == "เลือกสาย"  || line === "สายที่ 1") && ( */}
                     <div>
-                        <div className='mt-4 mb-4'>สาย 1</div>
+                        <div className='mt-4 mb-4'>สาย 3</div>
                         <div className='ml-8'>
                             {/* <p>ขึ้น</p>
                             <p>ลง</p>
@@ -145,6 +145,9 @@ function Record() {
                     </div>
 
                     <div className=''>
+                        <div>
+                            เลือกเวลาย้อนหลัง
+                        </div>
                         <select className='border-2 border-black' onChange={e => { time = e.target.value; onClickHandler() }}>
                             <option value={"0"}>เลือกเวลา</option>
                             <option value={"-1h"}>1 hour</option>

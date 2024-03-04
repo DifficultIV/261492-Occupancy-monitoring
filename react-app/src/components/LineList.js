@@ -6,11 +6,7 @@ export const LineList = [
         
     },
     {
-        title: "สายที่ 1",
-        
-    },
-    {
-        title: "สายที่ 2",
+        title: "สายที่ 3",
         
     },
 ]
