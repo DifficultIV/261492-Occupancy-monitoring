@@ -5,14 +5,14 @@ function Home() {
     const [data, setData] = useState([])
     const [recdata, setRecdata] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/currentdb", { mode: "cors" })
+        fetch(`${process.env.URL}/currentdb`, { mode: "cors" })
             .then(res => res.json())
             .then((result) => {
                 setData(result)
             })
     }, [])
     useEffect(() => {
-        fetch("http://localhost:3000/db", { mode: "cors" })
+        fetch(`${process.env.URL}/db`, { mode: "cors" })
             .then(res => res.json())
             .then((result) => {
                 setRecdata(result)
