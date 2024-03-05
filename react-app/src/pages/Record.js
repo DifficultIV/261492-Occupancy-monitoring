@@ -158,7 +158,7 @@ function Record() {
                             <option value={"-30d"}>30 day</option>
                         </select>
 
-                        <div className='flex'>
+                        <div className='flex grid grid-cols-12'>
                             {
                                 pages.map((item, i) => (
                                     <button key={i} onClick={() => { page = item; onClickHandler() }} className='border-black border-2 m-2'>Page {item}</button>
