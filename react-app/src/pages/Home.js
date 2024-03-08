@@ -47,20 +47,21 @@ function Home() {
                         <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8'>สถานีที่ 2</div>
                         <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8'>8/12</div>
                     </div> */}
-                </div>
-                <div>
-                    <div className='flex-col justify-between w-auto h-fit m-8'>การใช้งานแต่ละสถานี</div>
-                    <div className='grid grid-cols-4 gap-y-12'>
-                        {
-                            recdata.map((item, i) => (
-                                <div key={i}>
-                                    <Heatmap data={item} />
-                                    <p className='text-center text-wrap'>{item.station}</p>
-                                </div>
-                            ))
-                        }
+                    <div>
+                        <div className='flex-col justify-between w-auto h-fit m-8'>การใช้งานแต่ละสถานี</div>
+                        <div className='grid grid-cols-4 gap-y-12'>
+                            {
+                                recdata.map((item, i) => (
+                                    <div key={i}>
+                                        <Heatmap data={item} />
+                                        <p className='text-center text-wrap'>{item.station}</p>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
+
 
 
             </div>

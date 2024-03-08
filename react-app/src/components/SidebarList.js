@@ -10,7 +10,7 @@ export const SidebarList = [
         link: "/record"
     },
     {
-        title: "About Us",
+        title: "About",
         link: "/about"
     },
 ]
