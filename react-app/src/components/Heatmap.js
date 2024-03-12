@@ -4,10 +4,10 @@ let size = 0
 let bgcolor = "bg-green-700"
 let bordercolor = "green"
 function Heatmap({ data }) {
-    if (data.current >= 10) size = 20
-    else if (data.current >= 7) size = 16
-    else if (data.current >= 4) size = 14
-    else size = 12
+    if (data.current >= 10) size = 80
+    else if (data.current >= 7) size = 64
+    else if (data.current >= 4) size = 56
+    else size = 48
     if (data.in >= data.out) {
         bgcolor = "bg-green-700"
         bordercolor = "green"
@@ -18,7 +18,8 @@ function Heatmap({ data }) {
     }
 
     return (
-        <div className={`rounded-full border-2 w-${size} h-${size} border-${bordercolor} ${bgcolor} m-auto text-center `}>
+        <div className={`rounded-full border-2 border-${bordercolor} ${bgcolor} m-auto text-center `}
+        style={{height: `${size}px`, width: `${size}px`}}>
             {data.current}
         </div>
             //     <div className={`rounded-full border-2 w-20 h-20 border-${bordercolor} ${bgcolor} m-auto text-center `}>
