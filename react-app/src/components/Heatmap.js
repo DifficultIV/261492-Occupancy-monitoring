@@ -9,16 +9,16 @@ function Heatmap({ data }) {
     else if (data.current >= 4) size = 56
     else size = 48
     if (data.in >= data.out) {
-        bgcolor = "bg-green-700"
+        bgcolor = "bg-green-500"
         bordercolor = "green"
     }
     else {
-        bgcolor = "bg-red-600"
+        bgcolor = "bg-red-500"
         bordercolor = "red"
     }
 
     return (
-        <div className={`rounded-full border-2 border-${bordercolor} ${bgcolor} m-auto text-center `}
+        <div className={`rounded-full border-2 border-${bordercolor} ${bgcolor} m-auto text-center  `}
         style={{height: `${size}px`, width: `${size}px`}}>
             {data.current}
         </div>
