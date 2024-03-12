@@ -80,65 +80,28 @@ function Record() {
                             <DropdownBus />
                         </div>
                     </div>
-                    {/* { (line == "เลือกสาย"  || line === "สายที่ 1") && ( */}
                     <div>
                         <div className='mt-4 mb-4'>สาย 3</div>
                         <div className='ml-8'>
-                            {/* <p>ขึ้น</p>
-                            <p>ลง</p>
-                            <p>เหลือ</p> */}
                         </div>
                         <div className='flex'>
                             <div className='flex items-center mt-8'>
                                 <div className='mr-4 '>คันที่ 1</div>
-                                {
+                                <div className='grid grid-cols-4'>
+                                                                    {
                                     db.map((item, i) => (
                                         <div key={i} className='m-2'>
                                             <p className='text-center'>ขึ้น:  {item.in}</p>
                                             <p className='text-center'>ลง:  {item.out}</p>
-                                            <p className='text-center'>ขึ้น:  {item.current}</p>
+                                            <p className='text-center'>คงเหลือ:  {item.current}</p>
                                             <Heatmap data={item} />
                                             <p className='text-wrap text-center'>{item.station}</p>
                                         </div>
 
                                     ))
                                 }
-                                {/* <div className=''>
-                                    <p>ขึ้น</p>
-                                    <p>ลง</p>
-                                    <p>เหลือ</p>
-                                    <div className='rounded-full border-2 w-20 h-20 border-black bg-black mx-auto'></div>
                                 </div>
-                                <div>
-                                    <div className='w-10 h-2 border-4 border-black bg-black mx-auto'></div>
-                                </div>
-                                <div>
-                                    <p>ขึ้น</p>
-                                    <p>ลง</p>
-                                    <p>เหลือ</p>
-                                    <div className='rounded-full border-4 w-16 h-16 border-black bg-black mx-auto'></div>
-                                </div>
-                                <div>
-                                    <div className='w-10 h-2 border-4 border-black bg-black mx-auto'></div>
-                                </div>
-                                <div>
-                                    <p>ขึ้น</p>
-                                    <p>ลง</p>
-                                    <p>เหลือ</p>
-                                    <div className='rounded-full border-4 w-14 h-14 border-black bg-black mx-auto'></div>
-                                </div>
-                                <div>
-                                    <div className='w-10 h-2 border-4 border-black bg-black mx-auto'></div>
-                                </div>
-                                <div>
-                                    <p>ขึ้น</p>
-                                    <p>ลง</p>
-                                    <p>เหลือ</p>
-                                    <div className='rounded-full border-4 w-12 h-12 border-black bg-black mx-auto'></div>
-                                </div>
-                                <div>
-                                    <div className='w-10 h-2 border-4 border-black bg-black mx-auto mt-16'></div>
-                                </div> */}
+
                             </div>
 
                         </div>
@@ -165,7 +128,7 @@ function Record() {
                                 ))
                             }
                         </div>
-                        <div className=''>
+                        <div className='mt-4'>
                             <div className='flex justify-center'>
                                 <p className=' border-2 border-black w-16 h-7 text-center'>bus_id </p>
                                 <p className=' border-2 border-black w-24 h-7 text-center'>date </p>

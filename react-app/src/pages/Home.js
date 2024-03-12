@@ -32,24 +32,19 @@ function Home() {
                     </div>
                     {data.map((item, i) => (
                         <div key={i} className='grid grid-cols-3'>
-                            <div className='flex-col justify-between w-auto h-fit m-8'>รถ</div>
-                            <div className='flex-col justify-between w-auto h-fit m-8'>สถานี</div>
-                            <div className='flex-col justify-between w-auto h-fit m-8'>จำนวนคนบนรถ</div>
-                            <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8 text-center'>{item.busid}</div>
-                            <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8 text-center'>{item.station}</div>
-                            <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8 text-center'>{item.current}/12</div>
+                            <div className='flex justify-center w-auto h-fit m-8 font-bold'>รถ</div>
+                            <div className='flex justify-center w-auto h-fit m-8 font-bold'>สถานี</div>
+                            <div className='flex justify-center w-auto h-fit m-8 font-bold'>จำนวนคนบนรถ</div>
+                            <div className='border-4 rounded-md flex-col justify-between w-auto h-8 bg-gray-200 m-8 text-center'>{item.busid}</div>
+                            <div className='border-4 rounded-md flex-col justify-between w-auto h-8 bg-gray-200 m-8 text-center'>{item.station}</div>
+                            <div className='border-4 rounded-md flex-col justify-between w-auto h-8 bg-gray-200 m-8 text-center'>{item.current}/12</div>
                         </div>
                     )
                     )}
 
-                    {/* <div className='grid grid-cols-3'>
-                        <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8'>คันที่ 2</div>
-                        <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8'>สถานีที่ 2</div>
-                        <div className='border-4 rounded-md flex-col justify-between w-auto h-fit bg-gray-200 m-8'>8/12</div>
-                    </div> */}
                     <div>
                         <div className='flex-col justify-between w-auto h-fit m-8'>การใช้งานแต่ละสถานี</div>
-                        <div className='grid grid-cols-4 gap-y-12'>
+                        <div className='grid grid-cols-4 gap-y-12 ml-8'>
                             {
                                 recdata.map((item, i) => (
                                     <div key={i}>
