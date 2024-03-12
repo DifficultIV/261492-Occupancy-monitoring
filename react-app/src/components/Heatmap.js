@@ -21,6 +21,9 @@ function Heatmap({ data }) {
         <div className={`rounded-full border-2 w-${size} h-${size} border-${bordercolor} ${bgcolor} m-auto text-center `}>
             {data.current}
         </div>
+            //     <div className={`rounded-full border-2 w-20 h-20 border-${bordercolor} ${bgcolor} m-auto text-center `}>
+            //     {data.current}
+            // </div>
     )
 }
 
