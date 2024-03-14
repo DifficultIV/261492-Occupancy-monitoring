@@ -37,7 +37,7 @@ function Home() {
                             <div className='flex justify-center w-auto h-fit m-8 font-bold'>จำนวนคนบนรถ</div>
                             <div className='border-4 rounded-md flex-col justify-between w-auto h-8 bg-gray-200 m-8 text-center'>{item.busid}</div>
                             <div className='border-4 rounded-md flex-col justify-between w-auto h-8 bg-gray-200 m-8 text-center'>{item.station}</div>
-                            <div className='border-4 rounded-md flex-col justify-between w-auto h-8 bg-gray-200 m-8 text-center'>{item.current}/12</div>
+                            <div className='border-4 rounded-md flex-col justify-between w-auto h-8 bg-gray-200 m-8 text-center'>{item.current}/16</div>
                         </div>
                     )
                     )}
