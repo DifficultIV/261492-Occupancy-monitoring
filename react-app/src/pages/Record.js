@@ -3,12 +3,17 @@ import Sidebar from '../components/Sidebar';
 import DropdownLine from '../components/DropdownLine';
 import DropdownBus from '../components/DropdownBus';
 import Heatmap from '../components/Heatmap';
+import ReactDatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 let time = "0"
 let page = 0
+let senddate = "0"
+let date_split = ""
+let pages = []
 const fetchButton = async () => {
     try {
-        const respone = await fetch(`${process.env.REACT_APP_URL}/recorddb?pages=${page}&time=${time}`)
+        const respone = await fetch(`${process.env.REACT_APP_URL}/recorddb?pages=${page}&time=${date_split[0]}`)
         const body = await respone.json()
         console.log(body)
         return body
@@ -18,12 +23,24 @@ const fetchButton = async () => {
 
 }
 
+// const refreshPageButton = async () =>{
+//     try {
+//         const respone = await fetch(`${process.env.REACT_APP_URL}/count`, { mode: "cors" })
+//         const body = await respone.json()
+//         console.log(body)
+//         return body
+//     }
+//     catch {
+//     }
+// }
+
 function Record() {
     var line = ""
     const [data, setData] = useState([])
     const [count, setCount] = useState([])
     const [db, setDb] = useState([])
-    let pages = []
+    const [startDate,setStartDate] = useState(new Date())
+
 
     const callFromDropdownLine = (value) => {
         console.log(value)
@@ -32,7 +49,17 @@ function Record() {
         console.log(line === "เลือกสาย")
     }
     const onClickHandler = async (value) => {
+        pages = []
+        date_split = senddate.split(", ")
+        console.log(date_split[0])
         const dataHold = await fetchButton(value)
+        // const countHold = await refreshPageButton()
+        // setCount(countHold)
+        // for (let i = 1; i <= count.page; i++) {
+        //     if (pages.indexOf(i) === -1) {
+        //         pages.push(i)
+        //     }
+        // }
         console.log(dataHold)
         setData(dataHold)
         console.log(data)
@@ -62,6 +89,7 @@ function Record() {
 
 
     useEffect(() => {
+        date_split = ""
         fetch(`${process.env.REACT_APP_URL}/recorddb`, { mode: "cors" })
             .then(res => res.json())
             .then((result) => {
@@ -76,18 +104,43 @@ function Record() {
                 <div className='ml-8'>
                     <div className=' mt-2 flex'>
                         <DropdownLine callback={callFromDropdownLine} />
-                        <div className='ml-8 '>
+                        {/* <div className='ml-8 '>
                             <DropdownBus />
-                        </div>
+                        </div> */}
                     </div>
                     <div>
-                        <div className='mt-4 mb-4'>สาย 3</div>
-                        <div className='ml-8'>
+                        {/* <div className='mt-4 mb-4'>สาย 3</div> */}
+                        {/* <div className='ml-8'>
+                        </div> */}
+                        {/* <div className='flex'> */}
+                        {/* <div className='flex items-center mt-8'> */}
+                        {/* <div className='mr-4 '>คันที่ 1</div> */}
+                        <div className='flex justify-center mt-16 border-b-2 border-slate-400'>
+                            <p className='  w-20 h-7 '>bus no.</p>
+                            <p className='  w-24 h-7'>date </p>
+                            <p className='  w-24 h-7'>time </p>
+                            <p className='  w-20 h-7'>Route </p>
+                            <p className='  w-64 h-7 '>station </p>
+                            <p className='  w-20 h-7 '>in </p>
+                            <p className='  w-20 h-7 '>out </p>
+                            <p className='  w-20 h-7 '>current </p>
                         </div>
-                        <div className='flex'>
-                            <div className='flex items-center mt-8'>
-                                <div className='mr-4 '>คันที่ 1</div>
-                                <div className='grid grid-cols-4'>
+                        {
+                                    db.map((item, i) => (
+                                        <div className='flex items-center justify-center border-b-2 border-slate-200' key={i}>
+                                        <p className='w-20 h-7'>{item.busid} </p>
+                                        <p className='w-24 h-7'>{item.date} </p>
+                                        <p className='w-24 h-7'>{item.time} </p>
+                                        <p className='w-20 h-7'>3</p>
+                                        <p className='w-64 h-7'>{item.station} </p>
+                                        <p className='w-20 h-7'>{item.in} </p>
+                                        <p className='w-20 h-7'>{item.out} </p>
+                                        <p className='w-20 h-7'>{item.current} </p>
+                                    </div>
+
+                                    ))
+                                }
+                        {/* <div className='grid grid-cols-4'>
                                                                     {
                                     db.map((item, i) => (
                                         <div key={i} className='m-2'>
@@ -100,18 +153,23 @@ function Record() {
 
                                     ))
                                 }
-                                </div>
+                                </div> */}
 
-                            </div>
+                        {/* </div> */}
 
-                        </div>
+                        {/* </div> */}
                     </div>
 
                     <div className=''>
                         <div>
                             เลือกเวลาย้อนหลัง
                         </div>
-                        <select className='border-2 border-black' onChange={e => { time = e.target.value; onClickHandler() }}>
+                        <div className='flex'>
+                            <ReactDatePicker className='border-2 border-black' selected={startDate} onChange={(date) => {setStartDate(date);senddate = date.toLocaleString('en-GB', { hourCycle: "h24" });onClickHandler()}}/>
+                            <button className='border-2 border-black ml-4' onClick={() =>{senddate = "";onClickHandler()}}>Reset Date</button>
+                        </div>
+                        
+                        {/* <select className='border-2 border-black' onChange={e => { time = e.target.value; onClickHandler() }}>
                             <option value={"0"}>เลือกเวลา</option>
                             <option value={"-1h"}>1 hour</option>
                             <option value={"-3h"}>3 hour</option>
@@ -119,7 +177,7 @@ function Record() {
                             <option value={"-3d"}>3 day</option>
                             <option value={"-7d"}>7 day</option>
                             <option value={"-30d"}>30 day</option>
-                        </select>
+                        </select> */}
 
                         <div className='flex grid grid-cols-12'>
                             {

@@ -33,7 +33,7 @@ function DropdownLine ({callback}){
         <div>
             <select name="lines" 
                     id="lines" 
-                    className="bg-blue-400 p-4 w-full flex items-center justify-between font-bold text-lg rounded-md tracking-wider"
+                    className="bg-slate-300 p-4 w-full flex items-center justify-between font-bold text-lg rounded-md tracking-wider"
                     onChange={e => {setSelectLine(e.target.value); callback(selectedLine)}}>
                 {LineList.map((item,i) =>(
                     <option value={item.title} key={i}>{item.title}</option>
