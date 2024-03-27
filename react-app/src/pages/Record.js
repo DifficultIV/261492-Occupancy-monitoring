@@ -165,8 +165,8 @@ function Record() {
                             เลือกเวลาย้อนหลัง
                         </div>
                         <div className='flex'>
-                            <ReactDatePicker className='border-2 border-black' selected={startDate} onChange={(date) => {setStartDate(date);senddate = date.toLocaleString('en-GB', { hourCycle: "h24" });onClickHandler()}}/>
-                            <button className='border-2 border-black ml-4' onClick={() =>{senddate = "";onClickHandler()}}>Reset Date</button>
+                            <ReactDatePicker className='border-2 border-slate-200 rounded-md bg-slate-200 w-24 text-center' selected={startDate} onChange={(date) => {setStartDate(date);senddate = date.toLocaleString('en-GB', { hourCycle: "h24" });onClickHandler()}}/>
+                            <button className='border-2 border-slate-200 rounded-md bg-slate-200 w-24 ml-4' onClick={() =>{senddate = "";onClickHandler()}}>Reset Date</button>
                         </div>
                         
                         {/* <select className='border-2 border-black' onChange={e => { time = e.target.value; onClickHandler() }}>
@@ -182,31 +182,33 @@ function Record() {
                         <div className='flex grid grid-cols-12'>
                             {
                                 pages.map((item, i) => (
-                                    <button key={i} onClick={() => { page = item; onClickHandler() }} className='border-black border-2 m-2'>Page {item}</button>
+                                    <button key={i} onClick={() => { page = item; onClickHandler() }} className='border-slate-200 border-2 m-2 rounded-md bg-slate-200 w-16'>Page {item}</button>
                                 ))
                             }
                         </div>
-                        <div className='mt-4'>
-                            <div className='flex justify-center'>
-                                <p className=' border-2 border-black w-16 h-7 text-center'>bus_id </p>
-                                <p className=' border-2 border-black w-24 h-7 text-center'>date </p>
-                                <p className=' border-2 border-black w-16 h-7 text-center'>time </p>
-                                <p className=' border-2 border-black w-16 h-7 text-center'>Line </p>
-                                <p className=' border-2 border-black w-60 h-7 text-center'>station </p>
-                                <p className=' border-2 border-black w-16 h-7 text-center'>in </p>
-                                <p className=' border-2 border-black w-16 h-7 text-center'>out </p>
-                                <p className=' border-2 border-black w-16 h-7 text-center'>current </p>
-                            </div>
+                        <div className='mt-2'>
+                        <div className='flex justify-center mt-8 border-b-2 border-slate-400'>
+                            <p className='  w-20 h-7 '>bus no.</p>
+                            <p className='  w-24 h-7'>date </p>
+                            <p className='  w-24 h-7'>time </p>
+                            <p className='  w-20 h-7'>Route </p>
+                            <p className='  w-64 h-7 '>station </p>
+                            <p className='  w-20 h-7 '>in </p>
+                            <p className='  w-20 h-7 '>out </p>
+                            <p className='  w-20 h-7 '>current </p>
+                        </div>
                             {data.map((item, i) => (
                                 <div className='flex items-center justify-center' key={i}>
-                                    <p className=' border-2 border-black w-16 h-7 text-center'>{item.busid} </p>
-                                    <p className=' border-2 border-black w-24 h-7 text-center'>{item.date} </p>
-                                    <p className=' border-2 border-black w-16 h-7 text-center'>{item.time} </p>
-                                    <p className=' border-2 border-black w-16 h-7 text-center'>{item.line} </p>
-                                    <p className=' border-2 border-black w-60 h-7 text-center'>{item.station} </p>
-                                    <p className=' border-2 border-black w-16 h-7 text-center'>{item.in} </p>
-                                    <p className=' border-2 border-black w-16 h-7 text-center'>{item.out} </p>
-                                    <p className=' border-2 border-black w-16 h-7 text-center'>{item.current} </p>
+                                         <div className='flex items-center justify-center border-b-2 border-slate-200' key={i}>
+                                        <p className='w-20 h-7'>{item.busid} </p>
+                                        <p className='w-24 h-7'>{item.date} </p>
+                                        <p className='w-24 h-7'>{item.time} </p>
+                                        <p className='w-20 h-7'>3</p>
+                                        <p className='w-64 h-7'>{item.station} </p>
+                                        <p className='w-20 h-7'>{item.in} </p>
+                                        <p className='w-20 h-7'>{item.out} </p>
+                                        <p className='w-20 h-7'>{item.current} </p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
