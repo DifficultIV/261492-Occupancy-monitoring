@@ -165,7 +165,7 @@ function Record() {
                             เลือกเวลาย้อนหลัง
                         </div>
                         <div className='flex'>
-                            <ReactDatePicker className='border-2 border-slate-200 rounded-md bg-slate-200 w-24 text-center' selected={startDate} onChange={(date) => {setStartDate(date);senddate = date.toLocaleString('en-GB', { hourCycle: "h24" });onClickHandler()}}/>
+                            <ReactDatePicker className='border-2 border-slate-200 rounded-md bg-slate-200 w-24 text-center' selected={startDate} dateFormat={"dd/MM/yyyy"} onChange={(date) => {setStartDate(date);senddate = date.toLocaleString('en-GB', { hourCycle: "h24" });onClickHandler()}}/>
                             <button className='border-2 border-slate-200 rounded-md bg-slate-200 w-24 ml-4' onClick={() =>{senddate = "";onClickHandler()}}>Reset Date</button>
                         </div>
                         
